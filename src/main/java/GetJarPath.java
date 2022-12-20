@@ -10,7 +10,8 @@ public interface GetJarPath {
                             .getCodeSource()
                             .getLocation()
                             .toURI().
-                            getPath());
+                            getPath())
+                    .getParentFile();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SiteListFile implements GetJarPath {
     // Путь сохранения файла со списком сайтов в каталоге с Jar-файлом (программой)
-    static File siteListFile = new File(GetJarPath.getPath().getParentFile() + "/sitelist.json");
+    static File siteListFile = new File(GetJarPath.getPath() + "/sitelist.json");
 
     // Прочитать файл sitelist.json
     public static List<Site> readingSiteListFile() {
