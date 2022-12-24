@@ -24,7 +24,7 @@ public class Main {
                                     "3. Удалить игру из отслеживаемых.\n" +
                                     "4. Изменить путь сохранения.\n" +
                                     "5. Завершить программу.\n" +
-                                    "> ");
+                                    "Введи номер пункта и нажми 'Enter'\n> ");
 
                     int numOp = Integer.parseInt(input.nextLine());
                     if (numOp < 1 || numOp > 5) System.err.println("Выбери пункт меню!");

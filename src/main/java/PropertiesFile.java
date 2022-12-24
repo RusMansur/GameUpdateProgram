@@ -7,7 +7,7 @@ public class PropertiesFile implements GetJarPath {
     Properties properties = new Properties();
     String torrentPath = "SAVE_TORRENTFILE_PATH";
 
-    File programPath = GetJarPath.getPath().getParentFile();
+    File programPath = GetJarPath.getPath();
     File propertiesFile = new File(programPath + "\\config.ini");
 
     //    Создать файл свойств
