@@ -33,6 +33,7 @@ public class SiteListFile implements GetJarPath {
                     Site site = new Site(
                             jObject.get("name").toString(),
                             jObject.get("href").toString(),
+                            jObject.get("version").toString(),
                             jObject.get("date").toString()
                     );
                     list.add(site);

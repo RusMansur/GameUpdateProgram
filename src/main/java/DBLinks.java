@@ -19,10 +19,11 @@ public class DBLinks {
     public boolean parsingSite(Document document, String link) throws IOException {
         String name = getGameName(document);
         String date = getDateFromSite(document);
-        Site newSite = new Site(name, link, date);
+        String version = getVersion(document);
+        Site newSite = new Site(name, link, version, date);
         if (!siteList.contains(newSite)) {
             siteList.add(newSite);
-            downloadTorrentFile(newSite, document);
+            downloadTorrentFile(document);
             return true;
         }
         return false;
@@ -31,6 +32,7 @@ public class DBLinks {
     // Проверка обновлений
     public void checkUpdate(SiteListFile siteListFile) {
         String dateFromSite = null;
+        String versionFromSite = null;
         boolean siteListChanged = false;
         for (Site siteInFile : siteList) {
             Document document = null;
@@ -38,6 +40,7 @@ public class DBLinks {
                 if (!(siteInFile.getHref() == null)) {
                     document = Jsoup.connect(siteInFile.getHref()).get();
                     dateFromSite = getDateFromSite(document);
+                    versionFromSite = getVersion(document);
                     if (siteInFile.getDate() == null) {
                         siteInFile.setDate("01.01.1972");
                     }
@@ -46,7 +49,8 @@ public class DBLinks {
                 }
                 if (!compareDates(siteInFile, dateFromSite)) {
                     siteInFile.setDate(dateFromSite);
-                    downloadTorrentFile(siteInFile, document);
+                    siteInFile.setVersion(versionFromSite);
+                    downloadTorrentFile(document);
                     siteListChanged = true;
                 }
             } catch (IOException e) {
@@ -57,7 +61,7 @@ public class DBLinks {
     }
 
     // Скачивание торрент-файла
-    void downloadTorrentFile(Site site, Document document) throws IOException {
+    void downloadTorrentFile(Document document) throws IOException {
         String link = getTorrentLink(document);
         String[] strings = link.split("/");
         FileUtils.copyURLToFile(
@@ -119,5 +123,23 @@ public class DBLinks {
             }
         }
         return date;
+    }
+
+    // Получить версию
+    public String getVersion(Document document) {
+        String version = null;
+        Elements elements = document.getElementsByTag("div");
+        for (Element element : elements) {
+            if (element.hasAttr("style")) {
+                String[] strings = element.text().split(" ");
+                for (int i = 0; i < strings.length; i++) {
+                    if (strings[i].equals("Версия:")) {
+                        version = strings[i + 1];
+                        break;
+                    }
+                }
+            }
+        }
+        return version;
     }
 }

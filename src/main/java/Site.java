@@ -6,5 +6,6 @@ import lombok.Data;
 public class Site {
     private String name;
     private String href;
+    private String version;
     private String date;
 }

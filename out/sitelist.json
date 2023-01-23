@@ -2,16 +2,37 @@
   {
     "name": "Sweet Transit",
     "href": "https://thelastgame.ru/sweet-transit/",
+    "version": "v10028247",
     "date": "04.12.2022"
   },
   {
     "name": "Space Haven",
     "href": "https://thelastgame.ru/space-haven/",
-    "date": "11.12.2022"
+    "version": "0.16.0.17",
+    "date": "02.01.2023"
   },
   {
     "name": "Victoria 3 ",
     "href": "https://thelastgame.ru/victoria-3/",
+    "version": "1.1.2",
     "date": "15.12.2022"
+  },
+  {
+    "name": "Crusader Kings 3 ",
+    "href": "https://thelastgame.ru/crusader-kings-3/",
+    "version": "v1.8.1",
+    "date": "27.12.2022"
+  },
+  {
+    "name": "Workers \u0026 Resources Soviet Republic ",
+    "href": "https://thelastgame.ru/workers-resources-soviet-republic/",
+    "version": "0.8.8.17",
+    "date": "18.01.2023"
+  },
+  {
+    "name": "Kerbal Space Program (������ ����� �������) ",
+    "href": "https://thelastgame.ru/kerbal-space-program/",
+    "version": "v1.12.5.3190",
+    "date": "13.01.2023"
   }
 ]

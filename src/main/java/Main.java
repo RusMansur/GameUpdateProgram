@@ -27,7 +27,7 @@ public class Main {
                                     "Введи номер пункта и нажми 'Enter'\n> ");
 
                     int numOp = Integer.parseInt(input.nextLine());
-                    if (numOp < 1 || numOp > 5) System.err.println("Выбери пункт меню!");
+                    if (numOp < 1 || numOp > 5) {System.err.println("Выбери пункт меню!");}
                     switch (numOp) {
                         case 1: // Проверить обновления
                             dbLinks.checkUpdate(siteListFile);
@@ -39,7 +39,7 @@ public class Main {
                             if (link.contains("http")) {
                                 try {
                                     Document document = Jsoup.connect(link).get();
-                                    if (dbLinks.parsingSite(document, link)) siteListFile.saveSiteListFile();
+                                    if (dbLinks.parsingSite(document, link)) {siteListFile.saveSiteListFile();}
                                     System.out.println("Игра добавлена в список отслеживаемых.");
                                 } catch (IOException exception) {
                                     System.err.println("Введи ссылку на страницу с игрой (например: https://thelastgame.ru/crossout/): ");
@@ -88,7 +88,7 @@ public class Main {
         System.out.println("Игр в базе отслеживания " + DBLinks.siteList.size() + ":");
         for (int i = 0; i < DBLinks.siteList.size(); i++) {
             Site site = DBLinks.siteList.get(i);
-            System.out.println(i + 1 + ". " + site.getName() + " " + site.getDate());
+            System.out.println(i + 1 + ". " + site.getName() + " " + site.getVersion() + ", " + site.getDate());
         }
     }
 }
